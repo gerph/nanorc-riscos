@@ -1,0 +1,40 @@
+# RISC OS ARM file format syntax colouring
+
+syntax "ARM" "(^|/)(s|hdr)/[^/]*$"
+comment "; "
+
+## Assembler
+color cyan "^ +(ADD|ADC|SUB|SBC|RSB|RSC|MUL|EOR|MLA|ORR|AND|BIC|MOV|MVN)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?S?"
+color cyan "(CMN|CMP|TEQ|TST)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?P?"
+color cyan "^ +(LDR|STR)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?[BH]?"
+color cyan "^ +ADR(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?L?"
+color cyan "^ +SWI(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? +"
+color cyan "^ +(LDM|STM)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?(([ID][BA])|([FE][DA]))"
+color cyan "^ +(EQU|DC)[DBWS]"
+color cyan "^ +(B|BL)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? "
+
+## Macros
+color cyan "^ +="
+color cyan "^ +ALIGN"
+color cyan "\<ROUT\>"
+
+## Strings
+color yellow "["][^"]*["]"
+
+## Numbers
+color yellow "&[0-9A-Fa-f]+" "[0-9]+" "%[01]+"
+
+## Registers
+icolor red "\<(r([0-9]|1[0-5])|sp|pc|lr|link)\>"
+
+## Labels
+color blue "^\$?([`A-Za-z_][0-9A-Za-z_]*)?"
+color blue "^\|([A-Za-z_][0-9A-Za-z_]*)\|"
+
+## Comments
+color green   ";.*"
+
+## Preprocessor
+icolor magenta "^ *\["
+icolor magenta "^ *\|"
+icolor magenta "^ *\]"

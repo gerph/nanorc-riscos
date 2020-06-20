@@ -1,0 +1,73 @@
+# !JFPatch file format syntax colouring
+
+syntax "JFPatch" ",13c$"
+comment "; "
+
+## Declarations
+icolor magenta "^(App|In|Out|Type|Ver|Max):? "
+
+## Block definitions
+icolor magenta "^Define (Workspace|Module)"
+icolor magenta "^Pre"
+icolor magenta "^End (Workspace|Module|Pre)"
+icolor magenta "^ +(Commands|Services|PostFilter|PreFilter|Events|Vectors|WimpSWIs|Resources|SWIs)"
+icolor magenta "^ +End (Commands|Services|Filter|PreFilter|PostFilter|Events|Vectors|WimpSWIs|Resources|SWIs)"
+icolor magenta "^ +(Name|Default|Version|Date|Code|Init|Final|Service|Author|Start|Help|Workspace|Task|Accept|Mask|SWI|Pre|Prefix|Base|Extra|Min|Max|Syntax) "
+
+## Assembler
+color cyan "^ +(ADD|ADC|SUB|SBC|RSB|RSC|MUL|EOR|MLA|ORR|AND|BIC|MOV|MVN)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?S?"
+color cyan "(CMN|CMP|TEQ|TST)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?P?"
+color cyan "^ +(LDR|STR)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?[BH]?"
+color cyan "^ +ADR(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?L?"
+color cyan "^ +SWI(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? +["&]"
+color cyan "^ +(LDM|STM)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?(([ID][DA])|([FE][DA]))"
+color cyan "^ +(EQU|DC)[DBWS]"
+color cyan "^ +(B|BL)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? "
+
+## Macros
+color brightgreen "^@ +(&[0-9A-Fa-f]+|endofcode)"
+color brightgreen "^ +REMP? +(".*"|CHR)"
+color brightgreen "^ +ERR +"
+color cyan "^ +EQUZA?"
+color cyan "^ +RES"
+color cyan "^ +MODE "
+color cyan "^ +ALIGN"
+color cyan "^ +NOP"
+color cyan "^ +RAS "
+color cyan "^ +XBL(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? "
+color cyan "^ +XSWI(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? "
+color cyan "^ +(LDR|STR|ADR)B?W(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? "
+color cyan "^ +L(MOV|ADR)(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)? "
+color cyan "^ +XLDM(EQ|NE|VS|VC|HI|LS|PL|MI|CS|CC|HS|LO|GE|GT|LE|LT|AL|NV)?FD"
+
+## Strings
+color yellow "["][^"]*["]"
+
+## Numbers
+color yellow "&[0-9A-Fa-f]+\b" "\b[0-9]+\b" "%[01]+"
+
+## Registers
+icolor red "\<(r([0-9]|1[0-5])|sp|pc|lr|link)\>"
+
+## Labels
+color brightblue "^>([`A-Za-z_][0-9A-Za-z_]*)"
+color brightblue "^>\|([A-Za-z_][0-9A-Za-z_]*)\|"
+color blue "^[$.]([`A-Za-z_][0-9A-Za-z_]*)%?"
+color blue "^[.]\|([A-Za-z_][0-9A-Za-z_]*)\|"
+
+## Comments
+color green ";.*"
+color green start="^ *\{" end="\}$"
+
+## Preprocessor
+icolor magenta "^%"
+icolor magenta "^# *cond "
+icolor magenta "^# *cond (set |of |endif)"
+icolor magenta "^# *cond (of |else|end|endif|inline)"
+icolor magenta "^# *MapWS "
+icolor magenta "^# *Library "
+icolor magenta "^# *(Post|End)"
+icolor magenta "^# *Rem "
+icolor magenta "^# *Run <CODE>"
+icolor magenta "^# *here Libraries"
+

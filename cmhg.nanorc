@@ -1,0 +1,18 @@
+# CMHG file format syntax colouring
+
+syntax "CMHG" "(^|/)cmhg/[^/]+$"
+comment "; "
+
+## Preprocessor
+color yellow "^# *(define|include|ifn?def|endif|elif|else|if)"
+
+## Declarations
+color cyan "^[a-z\-]*: *.*$"
+color white "^[a-z\-]*:"
+color magenta "^[a-z\-]*"
+
+## Numbers
+color yellow "&[0-9A-Fa-f]+"
+
+## Comments
+color green   ";.*"
