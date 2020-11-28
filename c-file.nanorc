@@ -7,7 +7,7 @@ color yellow "\<[A-Z_][0-9A-Z_]+\>"
 color blue "\<(float|double|bool|char|int|short|long|sizeof|enum|void|auto|static|const|struct|union|typedef|extern|(un)?signed|inline)\>"
 color yellow "\<(if|while|do|else|case|switch)\>"
 color yellow "\<(goto|continue|break|return)\>"
-color yellow "^#( 	)*(define|include|ifn?def|endif|elif|else|if)"
+color yellow "^#( 	)*(define|undef|include|ifn?def|endif|elif|else|if)"
 ##
 ## You will in general want your comments and strings to come last,
 ## because syntax highlighting rules will be applied in the order they

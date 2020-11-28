@@ -3,16 +3,63 @@
 syntax "CMHG" "(^|/)cmhg/[^/]+$"
 comment "; "
 
-## Preprocessor
-color yellow "^# *(define|include|ifn?def|endif|elif|else|if)"
+## Invalid declarations:
+color ,red "^[a-z\-]*.*$"
 
-## Declarations
-color cyan "^[a-z\-]*: *.*$"
-color white "^[a-z\-]*:"
-color magenta "^[a-z\-]*"
+## Declarations: Flags:
+color ,red "^(module-is-runnable|module-is-not-reentrant|module-is-c-plus-plus): *[^ ].*$"
+color magenta "^(module-is-runnable|module-is-not-reentrant|module-is-c-plus-plus): *$"
+
+## Declarations: Strings:
+color ,red "^(title-string|help-string|international-help-file|date-string):.*$"
+color brightblue "^(title-string|help-string|date-string): *[A-Za-z0-9].*$"
+color brightblue "^(international-help-file): *".*"$"
+color magenta "^(title-string|help-string|international-help-file|date-string):"
+
+## Declarations: Hex:
+color magenta "^(swi-chunk-base-number|error-base|error-chunk-base-number): *[^&].*$"
+
+## Declarations: Symbols:
+color ,red "^(initialisation-code|finalisation-code|swi-handler.*"-code|swi-decoding-code|library-enter-code|library-initialisation-code):.*$"
+color brightcyan "^(initialisation-code|finalisation-code|swi-handler-code|swi-decoding-code|library-enter-code|library-initialisation-code): *[A-Za-z_].*$"
+color magenta "^(initialisation-code|finalisation-code|swi-handler-code|swi-decoding-code|library-enter-code|library-initialisation-code): *"
+
+## Declarations: Names:
+color ,red "^(swi-decoding-table|error-identifiers|command-keyword-table|service-call-handler): *[^A-Za-z].*$"
+color cyan "^(swi-decoding-table|error-identifiers|command-keyword-table|service-call-handler): *[A-Za-z].*$"
+color magenta "^(swi-decoding-table|error-identifiers|command-keyword-table|service-call-handler): *"
+
+## Declarations: Symbol pairs:
+color ,red "^(generic-veneers|irq-handlers|vector-handlers|vector-traps|event-handler):.*$"
+color brightcyan "^(generic-veneers|irq-handlers|vector-handlers|vector-traps|event-handler): *[A-Za-z_][A-Za-z_0-9]+/[A-Za-z_][A-Za-z_0-9]+.*"
+color white "^(generic-veneers|irq-handlers|vector-handlers|vector-traps|event-handler): *[A-Za-z_][A-Za-z_0-9]+/"
+color brightcyan "^(generic-veneers|irq-handlers|vector-handlers|vector-traps|event-handler): *[A-Za-z_][A-Za-z_0-9]+"
+color magenta "^(generic-veneers|irq-handlers|vector-handlers|vector-traps|event-handler): *"
+
+# Continuation parameters
+color white "^ +.*"
+
+## Preprocessor
+color white "^# *(define |include |ifn?def |endif|elif |else|if ).*"
+color yellow "^# *(define |include |ifn?def |endif|elif |else|if )"
 
 ## Numbers
 color yellow "&[0-9A-Fa-f]+"
+color yellow "0x[0-9A-Fa-f]+"
+color yellow "( [0-9]+)+"
+
+## Version number
+color brightblue " [0-9]+\.[0-9][0-9][a-z]* "
+
+## Date
+color brightblue " [0-9][0-9] (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (19|20)[0-9][0-9]"
+
+## Strings
+color brightblue "\".*?\""
+
+## Parameters
+color cyan " (private-word|carry-capable|error-capable|min-args|max-args|gstrans-map|fs-command|international|add-syntax|configure|status|help|invalid-syntax|help-text|handler|no-handler):"
+
 
 ## Comments
 color green   ";.*"
