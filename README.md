@@ -8,6 +8,7 @@ configurations here.
 The following syntax configurations are supplied:
 
 * `arm.nanorc`: ARM source files, such as those assembled by the objasm tool.
+* `bbcbasic.nanorc`: Text BBC BASIC files, with or without line numbers.
 * `c-file.nanorc`: C file; although not specific to RISC OS, the configuration matches C filenames.
 * `cmhg.nanorc`: C Module Header Generator file format.
 * `jfpatch.nanorc`: My JFPatch assembler file format.
