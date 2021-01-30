@@ -1,4 +1,4 @@
-syntax "bbcbasic" ",fd1$"
+syntax "bbcbasic" ",fd1|\.bbc$"
 comment "REM "
 
 ## Tokens
@@ -61,6 +61,5 @@ color brightcyan "^ *\d*:* *REM|\*\|)"
 ## Line numbers
 color cyan "^ *[0-9]+"
 
-## Trailing spaces (has to be applied later because of the comments running over
-## multiple lines)
+## Trailing spaces
 color ,red "[[:space:]]+$"
