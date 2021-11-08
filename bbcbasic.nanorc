@@ -1,6 +1,15 @@
 syntax "bbcbasic" ",fd1|\.bbc$"
 comment "REM "
 
+## Numbers (before variables so that embedded numbers aren't coloured)
+color yellow "[\+-]?[0-9]+" "%[01]+" "[\+-]?([0-9]+)?\.[0-9]+"
+
+## Variables
+color brightyellow "[`A-Za-z_][`A-Za-z0-9_]*[%\$]?"
+
+## Numbers (floating point+hex after variables to colour the alphabetics properly)
+color yellow "[\+-]?&[0-9A-Fa-f]+" "[\+-]?[0-9]+(\.[0-9]+)?(E[\+-]?[0-9]+)"
+
 ## Tokens
 color brightcyan "OTHERWISE|AND|DIV|EOR|MOD|OR|ERROR"
 color brightcyan "LINE|OFF|STEP|SPC|TAB|ELSE|THEN"
@@ -10,7 +19,7 @@ color brightcyan "DEG|ERL|ERR|EVAL|EXP|FALSE|FN"
 color brightcyan "GET|INKEY|INSTR|INT|LEN|LN|LOG|NOT"
 color brightcyan "OPENUP|OPENOUT|PI|POINT|POS|RAD|RND"
 color brightcyan "SGN|SIN|SQR|TAN|TO|TRUE|USR|VAL|VPOS"
-color brightcyan "EOF|PAGE|TIME"
+color brightcyan "PAGE|TIME"
 color brightcyan "SOUND|CALL|CHAIN|CLEAR"
 color brightcyan "CLOSE|CLG|CLS|DATA|DEF|DIM|DRAW|END"
 color brightcyan "ENDPROC|ENVELOPE|FOR|GOSUB|GOTO|GCOL|IF"
@@ -28,25 +37,18 @@ color brightcyan "OLD|RENUMBER|SAVE|TEXTLOAD|TEXTSAVE"
 color brightcyan "TWIN|TWINO|SUM|BEAT"
 
 ## Function declarations
-color magenta "^ *\d*:*DEF *(PROC|FN) *[A-Za-z_][0-9A-Za-z_]*"
+color magenta "^ *\d*:*DEF *(PROC|FN) *[`A-Za-z_][`0-9A-Za-z_]*"
 color magenta "^ *\d*:*ENDPROC"
-color brightmagenta "(PROC|FN) *[A-Za-z_][0-9A-Za-z_]*"
+color brightmagenta "(PROC|FN) *[`A-Za-z_][`0-9A-Za-z_]*"
 color magenta "PROC|FN"
 color magenta "^ *\d*:* *="
 color white "^ *\d*:"
 color magenta "(:|THEN) *="
 color white ":"
 color brightcyan "THEN"
-
-## Numbers
-color yellow "[\+-]?&[0-9A-Fa-f]+" "[\+-]?[0-9]+" "%[01]+" "[\+-]?[0-9]+(\.[0-9]+)?(E[\+-]?[0-9]+)" "[\+-]?([0-9]+)?\.[0-9]+"
-
-## Variables
-color brightyellow "[A-Za-z_][A-Za-z0-9_]*[%\$]"
-
 ## Fix up token
 color brightcyan "CHR\$|GET\$|INKEY\$|LEFT\$|MID\$|RIGHT\$|STR\$|STRING\$|TIME\$|REPORT\$"
-color brightcyan "(BPUT|BGET|CLOSE|PTR|EXT)#"
+color brightcyan "(BPUT|BGET|CLOSE|PTR|EXT|EOF)#"
 
 ## *Commands
 color brightblue "^ *\d*:*\ *\*.*"
