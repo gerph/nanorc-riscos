@@ -4,14 +4,14 @@ comment "REM "
 ## Tokens
 color brightcyan "OTHERWISE|AND|DIV|EOR|MOD|OR|ERROR"
 color brightcyan "LINE|OFF|STEP|SPC|TAB|ELSE|THEN"
-color brightcyan "OPENIN|PTR|PAGE|TIME|LOMEM|HIMEM|ABS"
-color brightcyan "ACS|ADVAL|ASC|ASN|ATN|BGET|COS|COUNT"
-color brightcyan "DEG|ERL|ERR|EVAL|EXP|EXT|FALSE|FN"
+color brightcyan "OPENIN|PAGE|TIME|LOMEM|HIMEM|ABS"
+color brightcyan "ACS|ADVAL|ASC|ASN|ATN|COS|COUNT"
+color brightcyan "DEG|ERL|ERR|EVAL|EXP|FALSE|FN"
 color brightcyan "GET|INKEY|INSTR|INT|LEN|LN|LOG|NOT"
 color brightcyan "OPENUP|OPENOUT|PI|POINT|POS|RAD|RND"
 color brightcyan "SGN|SIN|SQR|TAN|TO|TRUE|USR|VAL|VPOS"
-color brightcyan "EOF|PTR|PAGE|TIME"
-color brightcyan "LOMEM|HIMEM|SOUND|BPUT|CALL|CHAIN|CLEAR"
+color brightcyan "EOF|PAGE|TIME"
+color brightcyan "SOUND|CALL|CHAIN|CLEAR"
 color brightcyan "CLOSE|CLG|CLS|DATA|DEF|DIM|DRAW|END"
 color brightcyan "ENDPROC|ENVELOPE|FOR|GOSUB|GOTO|GCOL|IF"
 color brightcyan "INPUT|LET|LOCAL|MODE|MOVE|NEXT|ON"
@@ -25,7 +25,7 @@ color brightcyan "LIBRARY|TINT|ELLIPSE|BEATS|TEMPO|VOICES"
 color brightcyan "VOICE|STEREO|OVERLAY|APPEND|AUTO|CRUNCH"
 color brightcyan "DELETE|EDIT|HELP|LIST|LOAD|LVAR|NEW"
 color brightcyan "OLD|RENUMBER|SAVE|TEXTLOAD|TEXTSAVE"
-color brightcyan "TWIN|TWINO|INSTALL|SUM|BEAT"
+color brightcyan "TWIN|TWINO|SUM|BEAT"
 
 ## Function declarations
 color magenta "^ *\d*:*DEF *(PROC|FN) *[A-Za-z_][0-9A-Za-z_]*"
@@ -39,13 +39,14 @@ color white ":"
 color brightcyan "THEN"
 
 ## Numbers
-color yellow "[\+-]?&[0-9A-Fa-f]+" "[\+-]?[0-9]+" "%[01]+" "[\+-]?[0-9]+(\.[0-9]+)?(E[\-\+]?[0-9]+)"
+color yellow "[\+-]?&[0-9A-Fa-f]+" "[\+-]?[0-9]+" "%[01]+" "[\+-]?[0-9]+(\.[0-9]+)?(E[\+-]?[0-9]+)" "[\+-]?([0-9]+)?\.[0-9]+"
 
 ## Variables
 color brightyellow "[A-Za-z_][A-Za-z0-9_]*[%\$]"
 
 ## Fix up token
-color brightcyan "CHR\$|GET\$|INKEY\$|LEFT\$|MID\$|RIGHT\$|STR\$|STRING\$"
+color brightcyan "CHR\$|GET\$|INKEY\$|LEFT\$|MID\$|RIGHT\$|STR\$|STRING\$|TIME\$|REPORT\$"
+color brightcyan "(BPUT|BGET|CLOSE|PTR|EXT)#"
 
 ## *Commands
 color brightblue "^ *\d*:*\ *\*.*"
